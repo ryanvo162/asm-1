@@ -8,8 +8,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-black: #1f2128;
+  --color-blue: #2469f6;
+  --color-gray-active: #eeeeee;
+  --color-gray-main: #cdcdcd;
+  --font-sans: var(--font-montserrat);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +25,38 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="checkbox"] {
+  @apply appearance-none bg-transparent border border-gray-main w-[23px] h-[23px] rounded-md grid place-content-center transition-all duration-150;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  @apply w-[23px] h-[23px] rounded-sm scale-0 transition-transform duration-150 ease-in-out shadow-inner;
+  background: center no-repeat url(/tick2.svg) #2469f6;
+}
+
+input[type="checkbox"]:checked::before {
+  @apply scale-100;
+}
+
+input[type="checkbox"]:checked:hover::before {
+  background: center no-repeat url(/tick2.svg) #5087f8;
+}
+
+input[type="checkbox"]:checked:hover {
+  @apply border-[#5087F8];
+}
+
+input[type="checkbox"]:hover {
+  background: center no-repeat url(/tick.svg);
+}
+
+input[type="checkbox"]:active {
+  @apply outline-[3px] outline-solid outline-blue/10;
+}
+
+.shadow-card {
+  box-shadow: 0px 8px 15px 0px #1414141f, 0px 0px 4px 0px #1414141a;
 }
